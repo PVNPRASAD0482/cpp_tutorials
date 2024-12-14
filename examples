@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a;
+    cout<<"Enter a number ";
+    cin>>a;
+    cout<<"The number you have entered is "<<a;
+    return 0;
+}
+
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    string s;
+    cout<<"Enter your name: ";
+    getline(cin,s);
+    cout<<"Hi, "<<s;
+    return 0;
+}
+
+**Swap two numbers:**
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a,b,temp;
+    
+    cout << "Enter the value of a: ";
+    cin >> a;
+    cout << "Enter the value of b: ";
+    cin >> b;
+    
+    temp = a;
+    a = b;
+    b = temp;
+    
+    cout<<"a is "<<a<<" \nb is "<<b;
+    return 0;
+}
+
+
+**if - else statements**
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    bool rain;
+    cout<<"Is it raining: ";
+    cin>>rain;
+    if(rain == true)
+    {
+        cout<<"cannot go to movie";
+    }
+    else
+    {
+        cout<<"can go to movie";
+    }
+}
+
+
+
+
+
+
