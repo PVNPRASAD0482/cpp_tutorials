@@ -1,0 +1,157 @@
+**Defining the read and print Functions**
+
+istream &read(istream &is, Sales_data &item)
+{
+ double price = 0; is >> item.bookNo >> item.units_sold >> price; item.revenue = price * item.units_sold; return is;
+}
+ostream &print(ostream &os, const Sales_data &item)
+{
+ os << item.isbn() << " " << item.units_sold << " " << item.revenue << " " << item.avg_price(); return os;
+}
+
+
+**Defining the add Function**----------------------------------------------------------------
+
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
+{
+ Sales_data sum = lhs; // copy data members from lhs into sum
+ sum.combine(rhs); // add data members from rhs into sum
+ return sum;
+}
+
+**Copy Constructor:**----------------------------------------------------------------------
+
+// C++ program to illustrate the use of copy constructor
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+// Class definition for 'student'
+class student {
+    int rno;
+    string name;
+    double fee;
+
+public:
+    // Parameterized constructor
+    student(int, string, double);
+    // Copy constructor
+    student(student& t)
+    {
+        rno = t.rno;
+        name = t.name;
+        fee = t.fee;
+        cout << "Copy Constructor Called" << endl;
+    }
+    // Function to display student details
+    void display();
+};
+
+// Implementation of the parameterized constructor
+student::student(int no, string n, double f)
+{
+    rno = no;
+    name = n;
+    fee = f;
+}
+
+// Implementation of the display function
+void student::display()
+{
+    cout << rno << "\t" << name << "\t" << fee << endl;
+}
+
+int main()
+{
+    // Create student object with parameterized constructor
+    student s(1001, "Manjeet", 10000);
+    s.display();
+
+    // Create another student object using the copy
+    // constructor
+    student manjeet(s);
+    manjeet.display();
+
+    return 0;
+}
+
+**Friend:**--------------------------------------------------------------------------------------
+
+// C++ Program to demonstrate the
+// functioning of a friend class
+#include <iostream>
+using namespace std;
+
+class GFG {
+private:
+    int private_variable;
+
+protected:
+    int protected_variable;
+
+public:
+    GFG()
+    {
+        private_variable = 10;
+        protected_variable = 99;
+    }
+
+    // friend class declaration
+    friend class F;
+};
+
+// Here, class F is declared as a
+// friend inside class GFG. Therefore,
+// F is a friend of class GFG. Class F
+// can access the private members of
+// class GFG.
+class F {
+public:
+    void display(GFG& t)
+    {
+        cout << "The value of Private Variable = "       //10
+             << t.private_variable << endl;
+        cout << "The value of Protected Variable = "    1//99
+             << t.protected_variable;
+    }
+};
+
+// Driver code
+int main()
+{
+    GFG g;
+    F fri;
+    fri.display(g);
+    return 0;
+}
+
+
+**Converting Constructors**--------------------------------------------------------------------------
+
+#include <iostream>
+ 
+class MyClass {
+    int a, b;
+ 
+public:
+    MyClass(int i)
+    {
+        a = i;
+        b = i;
+    }
+    void display()
+    {
+        std::cout << " a = " << a << " b = " << b << "\n";
+    }
+};
+ 
+int main()
+{
+    MyClass object(10);
+    object.display();
+ 
+    // Single parameter conversion constructor is invoked.
+    object = 20;
+    object.display();
+    return 0;
+}
